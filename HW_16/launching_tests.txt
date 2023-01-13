@@ -1,5 +1,5 @@
 pytest .\aqa_hillel_tests\ -s -v -m "from_class or pack"
-pytest .\aqa_hillel_tests\ -s -v -m "param or pack"
+pytest .\aqa_hillel_tests\ -s -v -m "not from_class"
 pytest .\aqa_hillel_tests\ -s -v -m "pack and not rest"
 
 
