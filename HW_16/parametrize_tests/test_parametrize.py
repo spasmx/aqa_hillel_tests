@@ -16,8 +16,7 @@ def test_pairs_value(country, capital, function_fixture):
 
 
 @pytest.mark.param
-@pytest.mark.parametrize('name, age, phone', [('Mark', 30, '1234567890'), ('Mishel', 17, '096564523423'),
-                                              ('Bob', 54, '14353448345')])
-def test_info(name, age, phone, function_fixture):
-    print(f'Name: {name}\nAge: {age},\nPhone: {phone}')
+@pytest.mark.parametrize('val1, val2', [(1, ['a', 'b', 'c']), (1, 1.453), ({'a', 'b', 'c'}, True)],
+                         ids=['int and list', 'int and float', 'set and bool'])
+def test_info(val1, val2, function_fixture):
     assert True
