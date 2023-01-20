@@ -6,8 +6,8 @@ from selenium.webdriver.chrome.options import Options as chrome_options
 @pytest.fixture
 def get_chrome_options():
     options = chrome_options()
-    options.add_argument('chrome_headless') #Use --headless if you don't need browser UI
-    options.add_argument('--window-size=477,653')
+    #options.add_argument('--headless') #Use --headless if you don't need browser UI
+    options.add_argument('--window-size=1080,1080')
     return options
 
 
@@ -27,4 +27,10 @@ def setup(request, get_webdriver):
     driver.get(url)
     yield driver
 
+
+@pytest.fixture(scope='function', autouse=True)
+def start_end_test():
+    print('\nSTART TEST')
+    yield
+    print('\nEND TEST')
 
