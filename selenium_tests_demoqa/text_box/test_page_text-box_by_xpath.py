@@ -49,15 +49,3 @@ class TestPageTextBox:
         validation_email_color = setup.find_element(By.XPATH, '//input[@id="userEmail"][contains(@class, "field-error")]')
 
         assert validation_email_color
-
-
-
-
-
-
-
-
-
-
-
-
