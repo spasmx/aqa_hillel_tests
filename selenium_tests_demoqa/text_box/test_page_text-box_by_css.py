@@ -1,38 +1,29 @@
-import time
+from .locators_сss import *
 from selenium.webdriver.common.by import By
-
-FULL_NAME_CSS = 'input[id="userName"]'
-EMAIL_CSS = 'input[id="userEmail"]'
-CURRENT_ADDRESS_CSS = 'textarea[id="currentAddress"]'
-PERMANENT_ADDRESS_CSS = 'textarea[id="permanentAddress"]'
-SUBMIT_CSS = 'button[id="submit"]'
-OUTPUT_BOARD_CSS = 'div[id="output"]'
 
 
 class TestPageTextBox:
 
     def test_output_data_on_fields_xpath(self, setup):
 
-        full_name = setup.find_element(By.CSS_SELECTOR, FULL_NAME_CSS)
-        email = setup.find_element(By.CSS_SELECTOR, EMAIL_CSS)
-        current_address = setup.find_element(By.CSS_SELECTOR, CURRENT_ADDRESS_CSS)
-        permanent_address = setup.find_element(By.CSS_SELECTOR, PERMANENT_ADDRESS_CSS)
-        submit = setup.find_element(By.CSS_SELECTOR, SUBMIT_CSS)
-        output_board = setup.find_element(By.CSS_SELECTOR, OUTPUT_BOARD_CSS)
+        full_name_field = setup.find_element(By.CSS_SELECTOR, FULL_NAME_CSS)
+        email_field = setup.find_element(By.CSS_SELECTOR, EMAIL_CSS)
+        current_address_field = setup.find_element(By.CSS_SELECTOR, CURRENT_ADDRESS_CSS)
+        permanent_address_field = setup.find_element(By.CSS_SELECTOR, PERMANENT_ADDRESS_CSS)
+        submit_button = setup.find_element(By.CSS_SELECTOR, SUBMIT_CSS)
 
-        full_name.send_keys('Sergey')
-        email.send_keys('test@email.com')
-        current_address.send_keys('test current address')
-        permanent_address.send_keys('test permanent address')
+        full_name_field.send_keys('Sergey')
+        email_field.send_keys('test@email.com')
+        current_address_field.send_keys('test current address')
+        permanent_address_field.send_keys('test permanent address')
 
-        val_name = full_name.get_attribute('value')
-        val_email = email.get_attribute('value')
-        val_current_address = current_address.get_attribute('value')
-        val_permanent_address = permanent_address.get_attribute('value')
+        val_name = full_name_field.get_attribute('value')
+        val_email = email_field.get_attribute('value')
+        val_current_address = current_address_field.get_attribute('value')
+        val_permanent_address = permanent_address_field.get_attribute('value')
 
-        setup.execute_script("arguments[0].scrollIntoView();", submit)
-        submit.click()
-        setup.execute_script("arguments[0].scrollIntoView();", output_board)
+        setup.execute_script("arguments[0].scrollIntoView();", submit_button)
+        submit_button.click()
 
         result_name = setup.find_element(By.CSS_SELECTOR, 'p[id="name"]').text.split(':')[1]
         result_email = setup.find_element(By.CSS_SELECTOR, 'p[id="email"]').text.split(':')[1]
@@ -54,8 +45,6 @@ class TestPageTextBox:
         setup.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
-        time.sleep(5)
+        validation_email_color = setup.find_element(By.CSS_SELECTOR, '#userEmail.field-error')
 
-        validation_email_color = email.value_of_css_property('border')
-
-        assert 'rgb(255, 0, 0)' in validation_email_color
+        assert validation_email_color

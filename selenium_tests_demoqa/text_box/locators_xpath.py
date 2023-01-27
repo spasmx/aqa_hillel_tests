@@ -1,0 +1,6 @@
+FULL_NAME_XPATH = '//input[@id="userName"]'
+EMAIL_XPATH = '//input[@id="userEmail"]'
+CURRENT_ADDRESS_XPATH = '//textarea[@id="currentAddress"]'
+PERMANENT_ADDRESS_XPATH = '//textarea[@id="permanentAddress"]'
+SUBMIT_XPATH = '//button[@id="submit"]'
+OUTPUT_BOARD_XPATH = '//div[@id="output"]'

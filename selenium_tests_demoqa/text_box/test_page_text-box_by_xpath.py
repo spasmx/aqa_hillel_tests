@@ -1,12 +1,5 @@
-import time
+from .locators_xpath import *
 from selenium.webdriver.common.by import By
-
-FULL_NAME_XPATH = '//input[@id="userName"]'
-EMAIL_XPATH = '//input[@id="userEmail"]'
-CURRENT_ADDRESS_XPATH = '//textarea[@id="currentAddress"]'
-PERMANENT_ADDRESS_XPATH = '//textarea[@id="permanentAddress"]'
-SUBMIT_XPATH = '//button[@id="submit"]'
-OUTPUT_BOARD_XPATH = '//div[@id="output"]'
 
 
 class TestPageTextBox:
@@ -32,12 +25,11 @@ class TestPageTextBox:
 
         setup.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
-        setup.execute_script("arguments[0].scrollIntoView();", output_board)
 
-        result_name = setup.find_element(By.XPATH, '//p[@id="name"]').text.split(':')[1]
-        result_email = setup.find_element(By.XPATH, '//p[@id="email"]').text.split(':')[1]
-        result_current_address = setup.find_element(By.XPATH, '//p[@id="currentAddress"]').text.split(':')[1]
-        result_permanent_address = setup.find_element(By.XPATH, '//p[@id="permanentAddress"]').text.split(':')[1]
+        result_name = setup.find_element(By.XPATH, '//input[@id="name"]').text.split(':')[1]
+        result_email = setup.find_element(By.XPATH, '//input[@id="email"]').text.split(':')[1]
+        result_current_address = setup.find_element(By.XPATH, '//input[@id="currentAddress"]').text.split(':')[1]
+        result_permanent_address = setup.find_element(By.XPATH, '//input[@id="permanentAddress"]').text.split(':')[1]
 
         output_board_data = [result_name == val_name, result_email == val_email,
                              result_current_address == val_current_address,
@@ -49,16 +41,14 @@ class TestPageTextBox:
         email = setup.find_element(By.XPATH, EMAIL_XPATH)
         submit = setup.find_element(By.XPATH, SUBMIT_XPATH)
 
-        email.send_keys('test@com.ua')
+        email.send_keys('test@@com.ua')
 
         setup.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
-        time.sleep(5)
+        validation_email_color = setup.find_element(By.XPATH, '//input[@id="userEmail"][contains(@class, "field-error")]')
 
-        validation_email_color = email.value_of_css_property('border')
-
-        assert 'rgb(255, 0, 0)' in validation_email_color
+        assert validation_email_color
 
 
 
