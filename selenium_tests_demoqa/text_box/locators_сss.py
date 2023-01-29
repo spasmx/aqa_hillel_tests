@@ -9,3 +9,5 @@ OUTPUT_RESULT_NAME_CSS = '#name'
 OUTPUT_RESULT_EMAIL_CSS = '#email'
 OUTPUT_RESULT_CURRENT_ADDRESS_CSS = 'p#currentAddress'
 OUTPUT_RESULT_PERMANENT_ADDRESS_CSS = 'p#permanentAddress'
+
+ERROR_COLOR_EMAIL_FIELD_CSS = '#userEmail.field-error'

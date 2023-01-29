@@ -45,6 +45,6 @@ class TestPageTextBox:
         setup.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
-        validation_email_color = setup.find_element(By.CSS_SELECTOR, '#userEmail.field-error')
+        validation_email_color = setup.find_element(By.CSS_SELECTOR, ERROR_COLOR_EMAIL_FIELD_CSS)
 
         assert validation_email_color

@@ -45,6 +45,6 @@ class TestPageTextBox:
         setup.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
-        validation_email_color = setup.find_element(By.XPATH, '//input[@id="userEmail"][contains(@class, "field-error")]')
+        validation_email_color = setup.find_element(By.XPATH, ERROR_COLOR_EMAIL_FIELD_XPATH)
 
         assert validation_email_color
