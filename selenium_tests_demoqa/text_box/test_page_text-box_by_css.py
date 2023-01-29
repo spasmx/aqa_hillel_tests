@@ -25,10 +25,10 @@ class TestPageTextBox:
         setup.execute_script("arguments[0].scrollIntoView();", submit_button)
         submit_button.click()
 
-        result_name = setup.find_element(By.CSS_SELECTOR, 'p[id="name"]').text.split(':')[1]
-        result_email = setup.find_element(By.CSS_SELECTOR, 'p[id="email"]').text.split(':')[1]
-        result_current_address = setup.find_element(By.CSS_SELECTOR, 'p[id="currentAddress"]').text.split(':')[1]
-        result_permanent_address = setup.find_element(By.CSS_SELECTOR, 'p[id="permanentAddress"]').text.split(':')[1]
+        result_name = setup.find_element(By.CSS_SELECTOR, OUTPUT_RESULT_NAME_CSS).text.split(':')[1]
+        result_email = setup.find_element(By.CSS_SELECTOR, OUTPUT_RESULT_EMAIL_CSS).text.split(':')[1]
+        result_current_address = setup.find_element(By.CSS_SELECTOR, OUTPUT_RESULT_CURRENT_ADDRESS_CSS).text.split(':')[1]
+        result_permanent_address = setup.find_element(By.CSS_SELECTOR, OUTPUT_RESULT_PERMANENT_ADDRESS_CSS).text.split(':')[1]
 
         output_board_data = [result_name == val_name, result_email == val_email,
                              result_current_address == val_current_address,

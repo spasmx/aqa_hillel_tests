@@ -11,7 +11,6 @@ class TestPageTextBox:
         current_address = setup.find_element(By.XPATH, CURRENT_ADDRESS_XPATH)
         permanent_address = setup.find_element(By.XPATH, PERMANENT_ADDRESS_XPATH)
         submit = setup.find_element(By.XPATH, SUBMIT_XPATH)
-        output_board = setup.find_element(By.XPATH, OUTPUT_BOARD_XPATH)
 
         full_name.send_keys('Sergey')
         email.send_keys('test@email.com')
@@ -26,10 +25,10 @@ class TestPageTextBox:
         setup.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
-        result_name = setup.find_element(By.XPATH, '//input[@id="name"]').text.split(':')[1]
-        result_email = setup.find_element(By.XPATH, '//input[@id="email"]').text.split(':')[1]
-        result_current_address = setup.find_element(By.XPATH, '//input[@id="currentAddress"]').text.split(':')[1]
-        result_permanent_address = setup.find_element(By.XPATH, '//input[@id="permanentAddress"]').text.split(':')[1]
+        result_name = setup.find_element(By.XPATH, OUTPUT_RESULT_NAME_XPATH).text.split(':')[1]
+        result_email = setup.find_element(By.XPATH, OUTPUT_RESULT_EMAIL_XPATH).text.split(':')[1]
+        result_current_address = setup.find_element(By.XPATH, OUTPUT_RESULT_CURRENT_ADDRESS_XPATH).text.split(':')[1]
+        result_permanent_address = setup.find_element(By.XPATH, OUTPUT_RESULT_PERMANENT_ADDRESS_XPATH).text.split(':')[1]
 
         output_board_data = [result_name == val_name, result_email == val_email,
                              result_current_address == val_current_address,
