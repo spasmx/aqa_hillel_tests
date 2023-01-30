@@ -19,10 +19,8 @@ def click_checkbox(setup, checkboxes: list):
                 for elem in checkboxes:
                     checkbox = setup.find_element(By.XPATH, f'//span[@class = "rct-checkbox"]'
                                                             f'[ancestor::label[@for = "tree-node-{elem}"]]')
-
                     input_folder = setup.find_element(By.XPATH, f'//input[@id="tree-node-{elem}"]')
                     setup.execute_script("arguments[0].scrollIntoView();", checkbox)
-
                     if not input_folder.is_selected():
                         checkbox.click()
                         check_clicking.append(input_folder.is_selected())
