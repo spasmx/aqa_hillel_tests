@@ -37,3 +37,4 @@ def test_activate_disabled_radio_button(setup):
     setup.execute_script("arguments[0].removeAttribute('disabled','disabled')", input_no_radiobutton)
     label_no_radiobutton.click()
     assert input_no_radiobutton.is_selected()
+
