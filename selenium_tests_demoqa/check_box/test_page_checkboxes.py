@@ -4,7 +4,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 
 def test_click_check_box(setup):
-    assert click_checkbox(setup, ['commands', 'general'])
+    assert click_checkbox(setup, ['Commands', 'General'])
 
 
 def click_checkbox(setup, checkboxes: list):
@@ -18,8 +18,8 @@ def click_checkbox(setup, checkboxes: list):
                 TOGGLE_BUTTON.pop(toggle)
                 for elem in checkboxes:
                     checkbox = setup.find_element(By.XPATH, f'//span[@class = "rct-checkbox"]'
-                                                            f'[ancestor::label[@for = "tree-node-{elem}"]]')
-                    input_folder = setup.find_element(By.XPATH, f'//input[@id="tree-node-{elem}"]')
+                                                            f'[ancestor::label[@for = "tree-node-{elem.lower()}"]]')
+                    input_folder = setup.find_element(By.XPATH, f'//input[@id="tree-node-{elem.lower()}"]')
                     setup.execute_script("arguments[0].scrollIntoView();", checkbox)
                     if not input_folder.is_selected():
                         checkbox.click()
