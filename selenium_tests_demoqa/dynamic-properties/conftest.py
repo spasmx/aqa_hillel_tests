@@ -41,3 +41,4 @@ def get_id(setup):
     element = setup.find_element(By.XPATH, '//p[contains(text(), "random")]')
     yield element.get_attribute('id')
 
+
