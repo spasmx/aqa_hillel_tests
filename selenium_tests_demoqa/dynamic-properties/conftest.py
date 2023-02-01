@@ -2,6 +2,8 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as chrome_options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 @pytest.fixture
@@ -36,9 +38,15 @@ def start_end_test():
     print('\nEND TEST')
 
 
-@pytest.fixture()
+@pytest.fixture(scope='function')
 def get_id(setup):
     element = setup.find_element(By.XPATH, '//p[contains(text(), "random")]')
     yield element.get_attribute('id')
+
+@pytest.fixture(scope='function')
+def wait_for_enable_element(setup, elem_path):
+    element = WebDriverWait(setup, timeout=5).until(ec.element_to_be_clickable(elem_path))
+    yield element
+
 
 

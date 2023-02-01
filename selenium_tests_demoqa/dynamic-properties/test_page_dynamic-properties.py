@@ -7,3 +7,10 @@ def test_get_id(setup, get_id):
     assert element_text == 'This text has random Id'
 
 
+def test_wait_for_enable_element(setup):
+    pass
+
+
+def test_button_is_present(setup):
+    pass
+
