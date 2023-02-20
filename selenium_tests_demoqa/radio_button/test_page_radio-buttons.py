@@ -28,7 +28,7 @@ def test_get_radio_buttons_info(setup):
                                                              'Enabled': inputs_radiobutton[radio].is_enabled()}
 
     print(radio_button_info)
-    return radio_button_info
+    assert radio_button_info
 
 
 def test_activate_disabled_radio_button(setup):

@@ -4,7 +4,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 
 def test_click_check_box(setup):
-    assert click_checkbox(setup, ['commands', 'general'])
+    assert click_checkbox(setup, ['react', 'general', 'excelFile'])
 
 
 def click_checkbox(setup, checkboxes: list):
