@@ -28,7 +28,7 @@ def setup(request, get_webdriver, get_url):
     driver.quit()
 
 
-@pytest.fixture(scope='function', autouse=True)
+@pytest.fixture(scope='function')
 def start_end_test():
     print('\nSTART TEST')
     yield
