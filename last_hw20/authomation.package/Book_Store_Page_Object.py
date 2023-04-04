@@ -35,23 +35,24 @@ class BookStorePage:
         login_button.click()
         return self.driver.current_url
 
-    def sort_asc_table_data(self, column_title):
-        column = self.driver.find_element(By.XPATH, f'//div[text()={column_title}]/ancestor::div[@role="columnheader"]')
+    def sort_asc_table_data(self, column_tittle):
+        column = self.driver.find_element(By.XPATH, f'//div[text()="{column_tittle}"]'
+                                                    f'/ancestor::div[@role="columnheader"]')
         column.click()
         sorted_data_asc = self.driver.find_element(By.XPATH, '//div[contains(@class, "-sort-asc")]')
         return sorted_data_asc.get_attribute("class")
 
-    def sort_desc_table_data(self, column_title):
-        column = self.driver.find_element(By.XPATH, f'//div[text()={column_title}]')
+    def sort_desc_table_data(self):
+        column = self.driver.find_element(By.XPATH, f'//div[text()="Publisher"]')
         column.click()
         column.click()
         sorted_data_asc = self.driver.find_element(By.XPATH, '//div[contains(@class, "-sort-desc")]')
         return sorted_data_asc.get_attribute("class")
 
     def get_picture_book_by_author(self, author_name):
-        row_book = self.driver.find_element(By.XPATH, f'//div[text()={author_name}]')
+        row_book = self.driver.find_element(By.XPATH, f'//div[text()="{author_name}"]')
         book_img = row_book.find_element(By.XPATH, '/ancestor::div[@role="row"]//img[@src]')
-        return book_img
+        return book_img.is_displayed()
 
     def search_books(self, search_text):
         search_box = self.driver.find_element(By.ID, "searchBox")

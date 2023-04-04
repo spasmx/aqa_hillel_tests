@@ -27,7 +27,7 @@ class TestBookStore:
 
     def test_sorted_asc(self, setup_chrome):
         page = BookStorePage(setup_chrome)
-        result = page.sort_asc_table_data('Publisher')
+        result = page.sort_asc_table_data()
         assert "-sort-asc" in result
 
     def test_login_page(self, setup_chrome):
