@@ -72,20 +72,3 @@ class BookStorePage:
         return book_titles
 
 
-# def book_list_by_publisher_api(publisher):
-#     url = 'https://demoqa.com/BookStore/v1/Books'
-#     response = requests.get(url)
-#     result = json.loads(response.text).get('books')
-#     book_info = {}
-#     book_list = []
-#     for i in result:
-#         for k, v in i.items():
-#             if k == "title" or k == 'author' or k == 'publisher':
-#                 book_info[k] = v
-#         if book_info['publisher'] == publisher:
-#             book_list.append(book_info)
-#     return book_list
-#
-#
-#
-# print(book_list_by_publisher_api('No Starch Press'))
